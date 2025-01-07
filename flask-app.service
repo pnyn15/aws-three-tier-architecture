@@ -1,0 +1,16 @@
+[Unit]
+Description=Flask Application
+After=network.target
+
+[Service]
+User=ubuntu  # Replace with the user that runs the app
+Group=www-data  # Replace if needed
+WorkingDirectory=/home/ubuntu/application  # Path to your Flask app directory
+Environment="PATH=/home/ubuntu/venv/bin"  # Path to your virtual environment's `bin` directory
+ExecStart=/home/ubuntu/venv/bin/python3 /home/ubuntu/application/app.py  # Full path to run your Flask app
+
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
